@@ -132,3 +132,61 @@ Web pages + MVC + Web API = **MVC 6**
 
 ASP.NET Core is an open-source re-implementation of ASP.NET as a modular web framework, together with other frameworks like Entity Framework.
 The new framework uses the open-source .NET Compiler Platform (codename "Roslyn") and is cross platform.
+
+ public void SplitNarrative(string text)
+         {
+            //int pos=0,i=0;
+
+            //while (pos < text.Length && i<12)
+            //{
+            //   string fieldName = String.Format("Narrative{0}", (i + 1));
+            //   PropertyInfo property = this.GetType().GetProperties().Single<PropertyInfo>(p => p.Name == fieldName);
+            //   object[] paramList = new object[1];
+            //   paramList[0] = text.Substring(pos, (text.Length - pos >= 27 ? 27 : text.Length - pos));
+            //   property.GetSetMethod().Invoke(this, paramList);
+            //   pos += 27;
+            //   i++;
+            //}
+
+            string[] words = text.Split(new char[] { ' ', '-', '_' });
+            string line = "";
+            int index = 0;
+
+            foreach (string word in words)
+            {
+               if (line.Length + word.Length + 1 > 27)
+               {
+                  SetNarrativeField(line, index);
+                  line = word;
+                  index++;
+               }
+               else if (word.Length>0)
+               {
+                  if (line.Length > 0)
+                  {
+                     line += " " + word;
+                  }
+                  else
+                  {
+                     line += word;
+                  }
+               }
+            }
+            if (line.Length > 0)
+            {
+               SetNarrativeField(line, index);
+            }
+         }
+  private void SetNarrativeField(string text, int index)
+         {
+            if (index < 11)
+            {
+               string fieldName = String.Format("Narrative{0}", (index + 1));
+               PropertyInfo property = this.GetType().GetProperties().Single<PropertyInfo>(p => p.Name == fieldName);
+               object[] paramList = new object[1];
+               paramList[0] = text;
+               property.GetSetMethod().Invoke(this, paramList);
+            }
+         }
+
+
