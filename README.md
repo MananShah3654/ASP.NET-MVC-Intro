@@ -1,3 +1,4 @@
+[SplitNarrative.txt](https://github.com/MananShah3654/ASP.NET-MVC-Intro/files/12365801/SplitNarrative.txt)
 # An introduction to ASP.NET MVC
 
 ## What’s a Web Application Framework
@@ -131,18 +132,4 @@ If the View is forced to enumerate a result from the DB, you’ll get an excepti
 Web pages + MVC + Web API = **MVC 6**
 
 ASP.NET Core is an open-source re-implementation of ASP.NET as a modular web framework, together with other frameworks like Entity Framework.
-The new framework uses the open-source .NET Compiler Platform (codename "Roslyn") and is cross platform.
-
-  private void SetNarrativeField(string text, int index)
-         {
-            if (index < 11)
-            {
-               string fieldName = String.Format("Narrative{0}", (index + 1));
-               PropertyInfo property = this.GetType().GetProperties().Single<PropertyInfo>(p => p.Name == fieldName);
-               object[] paramList = new object[1];
-               paramList[0] = text;
-               property.GetSetMethod().Invoke(this, paramList);
-            }
-         }
-
-
+The new framework uses the open-source .NET Compiler Platform (codename "Roslyn") and is cross platform.[SplitNarrative.txt](https://github.com/MananShah3654/ASP.NET-MVC-Intro/files/12365805/SplitNarrative.txt)
